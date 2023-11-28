@@ -1,4 +1,3 @@
-import Usuario from "../models/Usuario.js";
 import Trabajo from "../models/Trabajo.js";
 
 const obtenerTrabajos = async(req, res)=>{
@@ -70,8 +69,6 @@ const editarTrabajo = async(req, res)=>{
     } catch (error) {
         console.log(error)
     }
-
-    res.json(trabajo)
 }
 const eliminarTrabajo = async(req, res)=>{
     // obtener trabajo por su id

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 //definir tabla en DB
 const trabajoSchema = mongoose.Schema({
     fecha: {
-        type: Date,
+        type: String,
         default: Date.now(),
         required: true,
     },
@@ -21,9 +21,14 @@ const trabajoSchema = mongoose.Schema({
         type: String,
         trim: true
     },
+    // cliente: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Cliente"
+    // },
     cliente: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Cliente"
+        type: String,
+        required: true,
+        trim: true
     },
     maquinista: {
         type: mongoose.Schema.Types.ObjectId,

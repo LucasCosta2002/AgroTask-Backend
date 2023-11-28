@@ -44,7 +44,7 @@ usuarioSchema.pre("save", async function(next){
 })
 
 usuarioSchema.methods.comprobarPassword = async function(passwordForm){
-    //comparar password hasheados, el nuevo y el de la db
+//comparar password hasheados,      el nuevo y el de la db
     return await bcrypt.compare(passwordForm, this.password)
 }
 
