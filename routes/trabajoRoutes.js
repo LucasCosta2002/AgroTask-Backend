@@ -13,4 +13,4 @@ router.route("/:id")
     .put(checkAuth, editarTrabajo)
     .delete(checkAuth, eliminarTrabajo)
 
-    export default router
+export default router

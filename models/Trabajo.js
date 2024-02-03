@@ -21,16 +21,16 @@ const trabajoSchema = mongoose.Schema({
         type: String,
         trim: true
     },
-    // cliente: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Cliente"
-    // },
     cliente: {
-        type: String,
-        required: true,
-        trim: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Cliente"
     },
-    maquinista: {
+    // cliente: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    // },
+    usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Usuario"
     }

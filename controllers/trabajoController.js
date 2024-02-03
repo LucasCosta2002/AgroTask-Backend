@@ -1,15 +1,16 @@
 import Trabajo from "../models/Trabajo.js";
+import Cliente from "../models/Cliente.js";
 
 const obtenerTrabajos = async(req, res)=>{
-    //buscar todos los trabajos por su maquinista autenticado
-    const trabajos = await Trabajo.find().where('maquinista').equals(req.usuario)
+    //buscar todos los trabajos por su usuario autenticado
+    const trabajos = await Trabajo.find().where('usuario').equals(req.usuario)
     res.json(trabajos)
-}
+}   
 const nuevoTrabajo = async(req, res)=>{
     //Traer plantilla de trabajo
     const trabajo = new Trabajo(req.body)
-    //asignar al trabajo al maquinista autenticado
-    trabajo.maquinista = req.usuario._id;
+    //asignar al trabajo al usuario autenticado
+    trabajo.usuario = req.usuario._id;
 
     try {
         // almacenar el trabajo con los datos leidos e instanciados
@@ -30,13 +31,18 @@ const obtenerTrabajo = async(req, res)=>{
         return res.status(404).json({msg: error.message})
     }
 
-    //comprobar que el maquinista que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
-    if(trabajo.maquinista.toString() !== req.usuario._id.toString()){
+    //comprobar que el usuario que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
+    if(trabajo.usuario.toString() !== req.usuario._id.toString()){
         const error = new Error("No creaste este trabajo, no tenés permisos para verlo")
         return res.status(401).json({msg: error.message})
     }
 
-    res.json(trabajo)
+    //obtener el cliente
+    const cliente = await Cliente.find().where("trabajo").equals(trabajo._id);
+    res.json({
+        trabajo,
+        cliente
+    })
 
 }
 const editarTrabajo = async(req, res)=>{
@@ -49,8 +55,8 @@ const editarTrabajo = async(req, res)=>{
         return res.status(404).json({msg: error.message})
     }
 
-    //comprobar que el maquinista que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
-    if(trabajo.maquinista.toString() !== req.usuario._id.toString()){
+    //comprobar que el usuario que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
+    if(trabajo.usuario.toString() !== req.usuario._id.toString()){
         const error = new Error("No creaste este trabajo, no tenés permisos para verlo")
         return res.status(401).json({msg: error.message})
     }
@@ -80,8 +86,8 @@ const eliminarTrabajo = async(req, res)=>{
         return res.status(404).json({msg: error.message})
     }
 
-    //comprobar que el maquinista que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
-    if(trabajo.maquinista.toString() !== req.usuario._id.toString()){
+    //comprobar que el usuario que quiere obtener el trabajo sea el mismo logeado que creo el trabajo
+    if(trabajo.usuario.toString() !== req.usuario._id.toString()){
         const error = new Error("No creaste este trabajo, no tenés permisos para verlo")
         return res.status(401).json({msg: error.message})
     }

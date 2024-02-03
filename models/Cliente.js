@@ -17,12 +17,12 @@ const clienteSchema = mongoose.Schema({
         type: String,
         trim: true
     },
-    trabajos: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Trabajo"
-        }
-    ]
+    // trabajos: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "Trabajo"
+    //     }
+    // ]
 },{
     timestamps: true
 }
