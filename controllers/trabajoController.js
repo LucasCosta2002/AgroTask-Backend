@@ -3,7 +3,7 @@ import Cliente from "../models/Cliente.js";
 
 const obtenerTrabajos = async(req, res)=>{
     //buscar todos los trabajos por su usuario autenticado
-    const trabajos = await Trabajo.find().where('usuario').equals(req.usuario)
+    const trabajos = await Trabajo.find().where('usuario').equals(req.usuario).populate('cliente')
     res.json(trabajos)
 }   
 const nuevoTrabajo = async(req, res)=>{
