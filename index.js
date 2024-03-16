@@ -2,9 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import conectarDB from './config/db.js';
 import cors from 'cors';
-import usuarioRoutes from './routes/usuarioRoutes.js';
-import trabajoRoutes from './routes/trabajoRoutes.js';
-import clienteRoutes from './routes/clienteRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import workRoutes from './routes/workRoutes.js';
+import clientRoutes from './routes/clientRoutes.js';
 
 const app = express() //servidor express
 app.use(express.json())// habilitar que express pueda leer json
@@ -30,11 +30,11 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 //Routing desde usuarioRoutes.js
-app.use("/api/usuarios", usuarioRoutes)
+app.use("/api/users", userRoutes)
 //Routing desde trabajoRoutes.js
-app.use("/api/trabajos", trabajoRoutes)
+app.use("/api/works", workRoutes)
 //Routing desde clienteRoutes.js
-app.use("/api/clientes", clienteRoutes)
+app.use("/api/clients", clientRoutes)
 
 
 const PORT = process.env.PORT || 4000;

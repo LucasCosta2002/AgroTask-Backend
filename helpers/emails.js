@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 
 export const emailRegistro = async datosUsuario =>{
 
-    const { email, nombre, token} = datosUsuario;
+    const { email, name, token} = datosUsuario;
 
     //Nodemailer API
     const transporter = nodemailer.createTransport({
@@ -22,7 +22,7 @@ export const emailRegistro = async datosUsuario =>{
         to: email, 
         subject: "AgroTask - Confirmá tu Cuenta ✔", 
         text: "Confirma tu Cuenta en AgroTask",
-        html: `<p>Hola ${nombre}, Confirma tu cuenta en AgroTask </p>
+        html: `<p>Hola ${name}, Confirma tu cuenta en AgroTask </p>
         <p>Tu cuenta está casi lista, solo tenés que confirmar tu contraseña en el siguiente enlace: 
         <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Confirmar Cuenta</a></p>
         
@@ -32,7 +32,7 @@ export const emailRegistro = async datosUsuario =>{
 
 export const emailOlvidePassword= async datosUsuario =>{
 
-    const { email, nombre, token} = datosUsuario;
+    const { email, name, token} = datosUsuario;
 
     //Nodemailer API
     const transporter = nodemailer.createTransport({
@@ -52,7 +52,7 @@ export const emailOlvidePassword= async datosUsuario =>{
         to: email, 
         subject: "AgroTask - Reestablece tu constraseña",
         text: "Reestablece tu constraseña",
-        html: `<p>Hola ${nombre}, has solicitado restablecer tu constraseña de AgroTask </p>
+        html: `<p>Hola ${name}, has solicitado restablecer tu constraseña de AgroTask </p>
         <p>Sigue el siguiente enlace para generar una nueva contraseña: 
         <a href="${process.env.FRONTEND_URL}/olvide-password/${token}">Reestablecer Contraseña</a></p>
         

@@ -1,5 +1,5 @@
 import express  from "express";
-import { nuevoTrabajo, obtenerTrabajos, editarTrabajo, obtenerTrabajo, eliminarTrabajo } from "../controllers/trabajoController.js";
+import { nuevoTrabajo, obtenerTrabajos, editarTrabajo, obtenerTrabajo, eliminarTrabajo } from "../controllers/workController.js";
 import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();

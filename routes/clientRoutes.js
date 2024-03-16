@@ -1,6 +1,6 @@
 import express from 'express';
 import checkAuth from '../middleware/checkAuth.js';
-import { editarCliente, eliminarCliente, nuevoCliente, obtenerCliente, obtenerClientes } from '../controllers/clienteController.js';
+import { editarCliente, eliminarCliente, nuevoCliente, obtenerCliente, obtenerClientes } from '../controllers/clientController.js';
 
 const router = express.Router();
 

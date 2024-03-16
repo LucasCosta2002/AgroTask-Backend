@@ -1,5 +1,5 @@
 import  jwt  from "jsonwebtoken";
-import Usuario from "../models/Usuario.js";
+import User from "../models/User.js";
 
 const checkAuth = async (req, res, next)=>{
 
@@ -12,7 +12,7 @@ const checkAuth = async (req, res, next)=>{
             const decoded = jwt.verify(token, process.env.JWT_SECRET) //traducir el jwt de la url
 
             //buscar el usuario por su id y le va a asignar el nuevo id, select para no trarme el resto
-            req.usuario = await Usuario.findById(decoded.id).select("-password -confirmado -token -createdAt -updatedAt -__v")
+            req.user = await User.findById(decoded.id).select("-password -confirmado -token -createdAt -updatedAt -__v")
 
             return next()
         } catch (error) {

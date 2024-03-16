@@ -1,38 +1,33 @@
 import mongoose from 'mongoose';
 
 //definir tabla en DB
-const trabajoSchema = mongoose.Schema({
-    fecha: {
+const workSchema = mongoose.Schema({
+    date: {
         type: String,
         default: Date.now(),
         required: true,
     },
-    hectareas: {
+    hectares: {
         type: Number,
         required: true,
         trim: true,
     },
-    agroquimico: {
+    agrochemical: {
         type: String,
         required: true,
         trim: true
     },
-    ubicacion: {
+    location: {
         type: String,
         trim: true
     },
-    cliente: {
+    client: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Cliente"
+        ref: "Client"
     },
-    // cliente: {
-    //     type: String,
-    //     required: true,
-    //     trim: true
-    // },
-    usuario: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Usuario"
+        ref: "User"
     }
 },{
     timestamps: true
@@ -40,7 +35,7 @@ const trabajoSchema = mongoose.Schema({
 );
 
 //Crear el modelo y asignar tabla  nombreModel    schema 
-const Trabajo = mongoose.model("Trabajo", trabajoSchema);
+const Work = mongoose.model("Work", workSchema);
 
 // hacerlo disponible para usarlo en otros archivos
-export default Trabajo; 
+export default Work; 

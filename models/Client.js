@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 //definir tabla en DB
-const clienteSchema = mongoose.Schema({
-    nombre: {
+const clientSchema = mongoose.Schema({
+    name: {
         type: String, 
         required: true,
         trim: true
@@ -13,7 +13,7 @@ const clienteSchema = mongoose.Schema({
         trim: true,
         unique: true
     },
-    telefono: {
+    phone: {
         type: String,
         trim: true
     },
@@ -29,7 +29,7 @@ const clienteSchema = mongoose.Schema({
 );
 
 //Crear el modelo y asignar tabla  nombreModel    schema 
-const Cliente = mongoose.model("Cliente", clienteSchema);
+const Client = mongoose.model("Client", clientSchema);
 
 // hacerlo disponible para usarlo en otros archivos
-export default Cliente; 
+export default Client; 

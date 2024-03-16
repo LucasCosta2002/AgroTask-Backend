@@ -1,5 +1,5 @@
 import express  from "express";
-import { registrar, autenticar, confirmar, olvidePassword, comprobarToken, nuevoPassword, perfil } from "../controllers/usuarioController.js";
+import { registrar, autenticar, confirmar, olvidePassword, comprobarToken, nuevoPassword, perfil } from "../controllers/userController.js";
 import checkAuth from "../middleware/checkAuth.js";
 
 //crear router de express
